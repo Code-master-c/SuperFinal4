@@ -59,11 +59,10 @@ public:
 		for (auto& [dx, dy] : all_dir) {
 			if (valid_coord(i + dx, j + dy) && !m_field[i + dx][j + dy])
 				++empty;
-			if (empty >= 3)
+			if (empty >= 3) // больше трех пустых поряд при обходе по часовой => образовалась комната 2x2 => нельзя прокладывать путь по этой координате.
 				return false;
 		}
 		return true;
-		
 	}
 
 	std::vector<std::pair<int, int>> get_available(size_t i, size_t j) {
